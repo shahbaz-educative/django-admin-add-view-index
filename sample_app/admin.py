@@ -46,7 +46,7 @@ class MyUltimateAdminSite(AdminSite):
         self.each_context(request),
             welcome="Welcome to the new view",
         )
-        return TemplateResponse(request, "admin/sample_app/custom_view.html", context)
+        return TemplateResponse(request, "sample_app/templates/admin/sample_app/custom_view.html", context)
 
 
 site = MyUltimateAdminSite()
