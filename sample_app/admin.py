@@ -28,8 +28,12 @@ class MyUltimateAdminSite(AdminSite):
         custom_urls = [
             path('my_view/', self.admin_view(self.my_view), name="my_view"),
         ]
-        return urls + custom_urls
 
+        final_urls = custom_urls + urls
+
+        # print(final_urls)
+
+        return final_urls
 
     def get_app_list(self,request):
         #Return a sorted list of our models  
@@ -42,6 +46,11 @@ class MyUltimateAdminSite(AdminSite):
     
     def my_view(self, request):
         # your business code
+
+        urls = super(MyUltimateAdminSite, self).get_urls()
+
+        print("*******Current Urls:", urls)
+
         context = dict(
         self.each_context(request),
             welcome="Welcome to the new view",
